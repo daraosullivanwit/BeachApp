@@ -1,8 +1,11 @@
 package org.wit.beachApp.console.main
 
 import mu.KotlinLogging
+import org.wit.beachApp.console.models.BeachModel
 
 private val logger = KotlinLogging.logger {}
+
+var beach = BeachModel()
 
 fun main(args: Array<String>){
     //Logging Support
@@ -45,13 +48,27 @@ fun menu() : Int {
         -9
     return option
 }
-//Placeholder menu option functions
+
 fun addBeach(){
-    println("You Chose Add Beach")
+    println("Add Beach")
+    println()
+    print("Enter Name : ")
+    beach.name = readLine()!!
+    print("Enter a Description : ")
+    beach.description = readLine()!!
+    println("You entered [ " + beach.name + " ] for name " +
+            "and [ " + beach.description + " ] for description")
 }
 
 fun updateBeach(){
-    println("You Chose Update Beach")
+    println("Update Beach")
+    println()
+    print("Enter a new name for [ " + beach.name + " ] : ")
+    beach.name = readLine()!!
+    print("Enter a new Description for [ " + beach.description + " ] : ")
+    beach.description = readLine()!!
+    println("You updated [ " + beach.name + " ] for name " +
+            "and [ " + beach.description + " ] for description")
 }
 
 fun listAllBeaches(){
