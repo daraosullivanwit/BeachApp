@@ -52,6 +52,11 @@ class BeachJSONStore : BeachStore {
         serialize()
     }
 
+    override fun delete(beach: BeachModel) {
+        beaches.remove(beach)
+        serialize()
+    }
+
     internal fun logAll() {
         beaches.forEach { logger.info("${it}") }
     }

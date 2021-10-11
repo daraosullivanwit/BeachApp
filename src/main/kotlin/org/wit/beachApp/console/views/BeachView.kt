@@ -16,6 +16,7 @@ class BeachView {
         println(" 2. Update Beach")
         println(" 3. List All Beaches")
         println(" 4. Search Beaches")
+        println(" 5. Delete Beaches")
         println("-1. Exit")
         println()
         print("Enter Option : ")

@@ -5,4 +5,5 @@ interface BeachStore {
     fun findOne(id: Long): BeachModel?
     fun create(beach: BeachModel)
     fun update(beach: BeachModel)
+    fun delete(beach: BeachModel)
 }

@@ -28,6 +28,7 @@ class BeachController {
                 2 -> update()
                 3 -> list()
                 4 -> search()
+                5 -> delete()
                 -99 -> dummyData()
                 -1 -> println("Exiting App")
                 else -> println("Invalid Option")
@@ -80,6 +81,20 @@ class BeachController {
     fun search(id: Long) : BeachModel? {
         var foundBeach = beaches.findOne(id)
         return foundBeach
+    }
+
+    fun delete() {
+        beachView.listBeaches(beaches)
+        var searchId = beachView.getId()
+        val aBeach = search(searchId)
+
+        if(aBeach != null) {
+            beaches.delete(aBeach)
+            println("Beach Deleted...")
+            beachView.listBeaches(beaches)
+        }
+        else
+            println("Beach Not Deleted...")
     }
 
     fun dummyData() {
