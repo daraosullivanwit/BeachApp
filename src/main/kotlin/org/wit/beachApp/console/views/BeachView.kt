@@ -1,7 +1,6 @@
 package org.wit.beachApp.console.views
 
-import org.wit.beachApp.console.main.beachView
-import org.wit.beachApp.console.main.beaches
+import org.wit.beachApp.console.models.BeachJSONStore
 import org.wit.beachApp.console.models.BeachMemStore
 import org.wit.beachApp.console.models.BeachModel
 
@@ -28,7 +27,7 @@ class BeachView {
         return option
     }
 
-    fun listBeaches(beaches : BeachMemStore) {
+    fun listBeaches(beaches : BeachJSONStore) {
         println("List All Beaches")
         println()
         beaches.logAll()

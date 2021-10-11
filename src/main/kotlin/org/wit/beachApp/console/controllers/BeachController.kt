@@ -1,19 +1,40 @@
 package org.wit.beachApp.console.controllers
 
 import mu.KotlinLogging
+import org.wit.beachApp.console.models.BeachJSONStore
 import org.wit.beachApp.console.models.BeachMemStore
 import org.wit.beachApp.console.models.BeachModel
 import org.wit.beachApp.console.views.BeachView
 
 class BeachController {
 
-    val beaches = BeachMemStore()
+    //val beaches = BeachMemStore()
+    val beaches = BeachJSONStore()
     val beachView = BeachView()
     val logger = KotlinLogging.logger {}
 
     init {
         logger.info { "Launching Beach Console App" }
         println("Beach Kotlin App Version 1.0")
+    }
+
+    fun start() {
+        var input: Int
+
+        do {
+            input = menu()
+            when (input) {
+                1 -> add()
+                2 -> update()
+                3 -> list()
+                4 -> search()
+                -99 -> dummyData()
+                -1 -> println("Exiting App")
+                else -> println("Invalid Option")
+            }
+            println()
+        } while (input != -1)
+        logger.info { "Shutting Down Beach Console App" }
     }
 
     fun menu() :Int { return beachView.menu() }
