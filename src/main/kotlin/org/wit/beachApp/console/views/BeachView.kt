@@ -11,7 +11,7 @@ class BeachView {
         var option : Int
         var input: String?
 
-        println("MAIN MENU")
+        println("\r\nMain Menu\r\n")
         println(" 1. Add Beach")
         println(" 2. Update Beach")
         println(" 3. List All Beaches")
@@ -29,7 +29,12 @@ class BeachView {
     }
 
     fun listBeaches(beaches : BeachJSONStore) {
-        println("List All Beaches")
+        println()
+        beaches.listAll()
+        println()
+    }
+
+    fun listBeachesIds(beaches : BeachJSONStore) {
         println()
         beaches.logAll()
         println()
@@ -37,7 +42,13 @@ class BeachView {
 
     fun showBeach(beach : BeachModel) {
         if(beach != null)
-            println("Beach Details [ $beach ]")
+            println("""
+                 \r\n${beach.name} Beach Details 
+                 
+                 Name: ${beach.name}
+                 Description: ${beach.description}
+                 Id: ${beach.id}
+            """.trimIndent())
         else
             println("Beach Not Found...")
     }

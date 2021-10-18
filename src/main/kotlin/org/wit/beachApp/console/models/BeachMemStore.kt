@@ -43,4 +43,7 @@ class BeachMemStore : BeachStore {
     internal fun logAll() {
         beaches.forEach { logger.info("${it}") }
     }
+    internal fun logAll1() {
+        beaches.forEach { logger.info("${it.name}") }
+    }
 }

@@ -58,7 +58,11 @@ class BeachJSONStore : BeachStore {
     }
 
     internal fun logAll() {
-        beaches.forEach { logger.info("${it}") }
+        beaches.forEach { println("• " + it.name + " Id: " +it.id)}
+    }
+
+    internal fun listAll() {
+        beaches.forEach { println("• " + it.name)}
     }
 
     private fun serialize() {

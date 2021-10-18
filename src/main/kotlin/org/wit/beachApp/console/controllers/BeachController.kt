@@ -15,7 +15,7 @@ class BeachController {
 
     init {
         logger.info { "Launching Beach Console App" }
-        println("Beach Kotlin App Version 1.0")
+        println("KOTLIN BEACH APP")
     }
 
     fun start() {
@@ -35,7 +35,7 @@ class BeachController {
             }
             println()
         } while (input != -1)
-        logger.info { "Shutting Down Beach Console App" }
+        logger.info { "Shutting Down Beach App" }
     }
 
     fun menu() :Int { return beachView.menu() }
@@ -45,8 +45,10 @@ class BeachController {
 
         if (beachView.addBeachData(aBeach))
             beaches.create(aBeach)
-        else
+        else {
             logger.info("Beach Not Added")
+            println("Beach Not Added")
+        }
     }
 
     fun list() {
@@ -54,25 +56,28 @@ class BeachController {
     }
 
     fun update() {
-
-        beachView.listBeaches(beaches)
+        println("\r\nYou choose to update a beach. Current beaches are as follows: ")
+        beachView.listBeachesIds(beaches)
         var searchId = beachView.getId()
         val aBeach = search(searchId)
 
         if(aBeach != null) {
             if(beachView.updateBeachData(aBeach)) {
                 beaches.update(aBeach)
-                beachView.showBeach(aBeach)
+                //beachView.showBeach(aBeach)
                 logger.info("Beach Updated : [ $aBeach ]")
+                println("\r\nBeach ${aBeach.name} has been updated")
             }
-            else
+            else {
+                println("\r\nBeach Not Updated...")
                 logger.info("Beach Not Updated")
+            }
         }
-        else
-            println("Beach Not Updated...")
     }
 
     fun search() {
+        println("\r\nYou choose to search a beach. Current beaches are as follows: ")
+        beachView.listBeachesIds(beaches)
         val aBeach = search(beachView.getId())!!
         beachView.showBeach(aBeach)
     }
@@ -84,7 +89,7 @@ class BeachController {
     }
 
     fun delete() {
-        beachView.listBeaches(beaches)
+        beachView.listBeachesIds(beaches)
         var searchId = beachView.getId()
         val aBeach = search(searchId)
 
